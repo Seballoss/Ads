@@ -1,0 +1,68 @@
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+html,body {
+	margin:0;
+	padding:0;
+}
+body{
+	overflow:hidden;
+}
+
+#pictures {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+}
+
+#pictures img {
+    display: block;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    margin: 0 auto;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+#pictures img.current {
+    opacity: 1;
+}
+</style>
+</head>
+<body >
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    var container = document.querySelector("#pictures");
+    var pictures = container.querySelectorAll("img");
+    
+    function change () {
+        var current = container.querySelector("img.current");
+        var next = container.querySelector("img.current + img") || pictures[0];
+        
+        if (current) {
+            current.classList.remove("current");
+        }
+        
+        if (next) {
+            next.classList.add("current");
+        }
+    }
+    
+    change();
+    setInterval(change, 8000);
+}, false);
+</script>
+<div id="pictures">
+    <img src="2.jpg" />
+    <img src="1.jpg" />
+    <img src="0.jpg" />
+</div>
+</body>
+
+</html>
