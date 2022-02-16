@@ -1,70 +1,273 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
+<meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<style>
-html,body {
-	margin:0;
-	padding:0;
+<style style="text/css">
+    #caption {
+position: fixed;
+font-size: 20px;
+line-height: 30px;
+height:100px;
+width: 100%;
+white-space: nowrap;
+-moz-animation:  caption 30s linear 0s infinite;
+-webkit-animation:  caption 30s linear 0s infinite;
 }
-body{
-	overflow:hidden;
+@-moz-keyframes caption { 
+0% { margin-left:100%; } 100% { margin-left:-1900px; }  
+}
+@-webkit-keyframes caption { 
+0% { margin-left:100%; } 100% { margin-left:-1900px; }  
 }
 
+html,body {
+margin:0;
+padding:0;
+
+
+}
+body{
+height: 100%;
+overflow:hidden;
+font-size:26px ;
+font-family: Lucida Sans Unicode;
+
+}
 #pictures {
-    position: relative;
+min-height: 100%
+    z-index: -;
     width: 1920px;
-    height: 1080px;
+    height: 980px;
+
 }
 
 #pictures img {
-    display: block;
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    margin: 0 auto;
-    opacity: 0;
-    transition: opacity 1s;
+display: block;
+  position:absolute;
+top: 0; left: 0; right: 0;
+        z-index: -;
+        width: 1920px;
+height: 980px;
+opacity: 0;
+transition: opacity 1s;
 }
+  
 
 #pictures img.current {
-    opacity: 1;
+opacity: 1;
+width: 1920px;
+height: 980px;
+    z-index: -;
+    
 }
+#stopka{ 
+width: 1920px;
+height: 100px;
+position: absolute ;
+z-index: 2;
+background-color: #cbae52;
+color: #1B1A39;
+
+}
+.one-column
+{
+float:left;
+width:20%;
+background-color:#1B1A39;
+text-align: center;
+border-style:solid;
+border-radius: 25px;
+color:whitesmoke;
+margin-top: 10px;
+}
+.two-column{
+float:left;
+width:20%;
+background-color:#1B1A39;
+text-align: center;
+border-style:solid;
+border-radius: 25px;
+color:whitesmoke;
+position:absolute;
+margin-left: 25%;
+margin-top: 10px;
+}
+.three-column
+{
+float:left;
+width:20%;
+background-color:#1B1A39;
+text-align: center;
+border-style:solid;
+border-radius: 25px;
+color:whitesmoke;
+position:absolute;
+margin-left: 50%;
+margin-top: 10px;
+
+}
+.four-column{
+float:left;
+width:20%;
+background-color:#1B1A39;
+text-align: center;
+border-style:solid;
+border-radius: 25px;
+color:whitesmoke;
+position:absolute;
+margin-left: 75%;
+margin-top: 10px;
+
+}
+#caption {
+margin-top: 5px;
+margin-bottom: 8px;
+height: 100px;
+width: 100%;
+}
+
+
+#btclogo{
+    float: left;
+width: 50px;   
+height: 50px;
+margin-top: 5px;
+margin-left: 12px;
+}
+
+#ethlogo{
+    float: left;
+width: 50px;   
+height: 50px;
+margin-top: 5px;
+margin-left: 12px;
+}
+#usdtlogo{
+float: left;
+width: 50px;   
+height: 50px;
+margin-top: 5px;
+margin-left: 12px;
+}
+#usdclogo{
+float: left;
+width: 50px;   
+height: 50px;
+margin-top: 5px;
+margin-left: 12px;}
+#kurs{
+z-index:1;
+}
+
+}
+
+
 </style>
 </head>
-<body >
+<body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var container = document.querySelector("#pictures");
+            var pictures = container.querySelectorAll("img");
+
+            function change() {
+                var current = container.querySelector("img.current");
+                var next = container.querySelector("img.current + img") || pictures[0];
+
+                if (current) {
+                    current.classList.remove("current");
+                }
+
+                if (next) {
+                    next.classList.add("current");
+                }
+            }
+
+            change();
+            setInterval(change, 8000);
+        }, false);
+   </script>
+
 <script>
-document.addEventListener("DOMContentLoaded", function () {
-    var container = document.querySelector("#pictures");
-    var pictures = container.querySelectorAll("img");
-    
-    function change () {
-        var current = container.querySelector("img.current");
-        var next = container.querySelector("img.current + img") || pictures[0];
+    $.getJSON("https://kantor.flyingatom.com/rate/merge", function(data) {
+        var USDTK = parseFloat(data.USDTPLN.cashIn)
+        var USDTS = parseFloat(data.USDTPLN.cashOut)
+        var USDCK = parseFloat(data.USDCPLN.cashIn)
+        var USDCS = parseFloat(data.USDCPLN.cashOut)
+
+var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETHPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.ETHPLN.cashOut))+ " PLN "; 
+var KUSDT = "ZAKUP: " +(USDTK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDTS).toFixed(2)+ " PLN ";           
+var KUSDC = "ZAKUP: " +(USDCK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDCS).toFixed(2)+ " PLN ";     
+var text ="ZAKUP: " + Math.floor(parseFloat(data.BTCPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.BTCPLN.cashOut))+ " PLN "; 
+
+$(".ETHK").html(KETH);
+$(".USDTK").html(KUSDT);
+$(".USDCK").html(KUSDC);
+$("#kurs").html(text)
+});
+setInterval(function() {
+    $.getJSON("https://kantor.flyingatom.com/rate/merge", function(data) {
+        var USDTK = parseFloat(data.USDTPLN.cashIn)
+        var USDTS = parseFloat(data.USDTPLN.cashOut)
+        var USDCK = parseFloat(data.USDCPLN.cashIn)
+        var USDCS = parseFloat(data.USDCPLN.cashOut)
+
+var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETHPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.ETHPLN.cashOut))+ " PLN "; 
+var KUSDT = "ZAKUP: " +(USDTK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDTS).toFixed(2)+ " PLN ";           
+var KUSDC = "ZAKUP: " +(USDCK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDCS).toFixed(2)+ " PLN ";     
+var text ="ZAKUP: " + Math.floor(parseFloat(data.BTCPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.BTCPLN.cashOut))+ " PLN "; 
+
+$(".ETHK").html(KETH);
+$(".USDTK").html(KUSDT);
+$(".USDCK").html(KUSDC);
+$("#kurs").html(text)
+});
+}, 30000);
+   </script>
+
+
+
+    <div id="pictures">
+        <img src="bithubnew.png" />
+        <img src="aml1.png" />
+        <img src="aml2.png" />
+        <img src="0.jpg" />
+        <img src="aml2.png" />
+        <img src="goldnew.png" />
+        <img src="aml1.png" />
+        <img src="aml2.png" />
+        <img src="kantornew.png" />
+        <img src="aml1.png" />
+        <img src="aml2.png" />
+        <img src="reklama_glyingatom_1920v44.png" />
+        <img src="aml1.png" />
+        <img src="aml2.png" />
+        <img src="reklamabitomaty_shop.png" />
+	    <img src="aml1.png" />
+        <img src="aml2.png" />
+        <img src="goldgif.gif" />
+        <img src="bitomat-baner-grupa-mediam-1920x1080.png" />
+        </div>
         
-        if (current) {
-            current.classList.remove("current");
-        }
-        
-        if (next) {
-            next.classList.add("current");
-        }
-    }
-    
-    change();
-    setInterval(change, 8000);
-}, false);
-</script>
-<div id="pictures">
-    <img src="bithubnew.png" />
-    <img src="0.jpg" />
-    <img src="goldnew.png" />
-    <img src="kantornew.png" />
-    <img src="reklama_glyingatom_1920v44.png" />
-    <img src="reklamabitomaty_shop.png" />
-    <img src="goldgif.gif" />
-    <img src="bitomat-baner-grupa-mediam-1920x1080.png" />
-	<img src="qr.png" />
-</div>
-</body>
-</html>
+        <div id="stopka">
+                <div id="caption">   
+                    <section class="one-column"><div> <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=018" alt="BTC" id="btclogo" alt="" /><b  id="kurs"></b></div> </section> 
+                    <section class="two-column" > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1024px-Ethereum-icon-purple.svg.png" alt="ETH"  id="ethlogo"/> <b class="ETHK"></b> </section>
+                    <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="USDT"  id="usdtlogo"/><b class="USDTK"></b> </section>
+                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png" alt="USDC"  id="usdclogo"/><b class="USDCK"></b>  </section>
+                    
+
+                    </div>     
+       
+        </div>
+
+        </body>		
+
+           
+
+      
+        </html>
+       
