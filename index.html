@@ -14,14 +14,14 @@ line-height: 30px;
 height:120px;
 width: 100%;
 white-space: nowrap;
--moz-animation:  caption 45s linear 0s infinite;
--webkit-animation:  caption 45s linear 0s infinite;
+-moz-animation:  caption 50s linear 0s infinite;
+-webkit-animation:  caption 50s linear 0s infinite;
 }
 @-moz-keyframes caption { 
-0% { margin-left:100%; } 100% { margin-left:-1900px; }  
+0% { margin-left:100%; } 100% { margin-left:-2100px; }  
 }
 @-webkit-keyframes caption { 
-0% { margin-left:100%; } 100% { margin-left:-1900px; }  
+0% { margin-left:100%; } 100% { margin-left:-2100px; }  
 }
 
 html,body {
@@ -76,7 +76,7 @@ color: #1B1A39;
 .one-column
 {
 float:left;
-width:22%;
+width:500px;
 background-color:#1B1A39;
 text-align: center;
 border-style:solid;
@@ -89,14 +89,14 @@ font-size: 24px;
 }
 .two-column{
 float:left;
-width:22%;
+width:500px;
 background-color:#1B1A39;
 text-align: center;
 border-style:solid;
 border-radius: 25px;
 color:whitesmoke;
 position:absolute;
-margin-left: 25%;
+margin-left: 550px;
 margin-top: 10px;
 height: 80px;
 font-size: 24px;
@@ -105,14 +105,14 @@ line-height: 40px;
 .three-column
 {
 float:left;
-width:22%;
+width:500px;
 background-color:#1B1A39;
 text-align: center;
 border-style:solid;
 border-radius: 25px;
 color:whitesmoke;
 position:absolute;
-margin-left: 50%;
+margin-left: 1100px;
 margin-top: 10px;
 height: 80px;
 font-size: 24px;
@@ -120,14 +120,14 @@ line-height: 40px;
 }
 .four-column{
 float:left;
-width:22%;
+width:500px;
 background-color:#1B1A39;
 text-align: center;
 border-style:solid;
 border-radius: 25px;
 color:whitesmoke;
 position:absolute;
-margin-left: 75%;
+margin-left: 1650px;
 margin-top: 10px;
 height: 80px;
 font-size: 24px;
@@ -177,8 +177,11 @@ h5{
     float:left;
     width: 30px;
     height: 30px;
-    margin-left: 14px;
+    margin-left: 17px;
     margin-top:45px;
+}
+#USD{
+    margin-left: 15px; 
 }
 
 
@@ -210,9 +213,9 @@ h5{
         }, false);
    </script>
 <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
-<script>
+<script>    
     function odswiez(){
-        setTimeout('window.location.reload()', 45000);
+        setTimeout('window.location.reload()', 1000);
 }      
     function sprawdz() {
     var xhr = new XMLHttpRequest();
@@ -287,8 +290,8 @@ setInterval(sprawdz, 45000);
                 <div id="caption">   
                     <section class="one-column"><div> <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=018"  id="btclogo" /><h5>BTC</h5><b  id="kurs">Brak Połączenia<br>Kurs na www.flyingatom.com</b></div> </section> 
                     <section class="two-column" > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1024px-Ethereum-icon-purple.svg.png"   id="ethlogo"/><h5>ETH</h5><b class="ETHK">Brak Połączenia<br>Kurs na www.flyingatom.com</b> </section>
-                    <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"   id="usdtlogo"/><h5>USDT</h5><b class="USDTK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b> </section>
-                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5>USDC</h5><b class="USDCK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b>  </section> 
+                    <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"   id="usdtlogo"/><h5 id="USD">USDT</h5><b class="USDTK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b> </section>
+                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5 id="USD">USDC</h5><b class="USDCK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b>  </section> 
                     </div>     
         </div>
         </body>		
