@@ -177,7 +177,7 @@ h5{
     float:left;
     width: 30px;
     height: 30px;
-    margin-left: 16px;
+    margin-left: 14px;
     margin-top:45px;
 }
 
@@ -211,6 +211,9 @@ h5{
    </script>
 <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
 <script>
+    function odswiez(){
+        setTimeout('window.location.reload()', 45000);
+}      
     function sprawdz(){                                      
 if (navigator.onLine) {                                             
     $.getJSON("https://kantor.flyingatom.com/rate/merge", function (data) {
@@ -230,16 +233,17 @@ if (navigator.onLine) {
     $("#kurs").html(text);
 })
 } else {
-    var nowa = "Brak Połączenia"; 
+    var nowa = "Brak Połączenia<br>&nbsp&nbspKurs na www.flyingatom.com"; 
     $(".ETHK").html(nowa);
     $(".USDTK").html(nowa);
     $(".USDCK").html(nowa);
     $("#kurs").html(nowa);
-    setTimeout('window.location.reload()', 45000);
+    odswiez()
 }
     }
     sprawdz()
-setInterval(sprawdz, 45000);                            
+setInterval(sprawdz, 45000);    
+                  
    </script>                                    <!-- odświeżenie strony po 45 sekundach jeśli nie ma połączenia i zmiana wyświetlanego tekstu -->
 
 
@@ -268,12 +272,11 @@ setInterval(sprawdz, 45000);
         
         <div id="stopka">                                                           <!-- Dodanie skrótów nazw kryptowalut -->
                 <div id="caption">   
-                    <section class="one-column"><div> <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=018"  id="btclogo" /><h5>BTC</h5><b  id="kurs">Brak Połączenia</b></div> </section> 
-                    <section class="two-column" > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1024px-Ethereum-icon-purple.svg.png"   id="ethlogo"/><h5>ETH</h5><b class="ETHK">Brak Połączenia</b> </section>
-                    <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"   id="usdtlogo"/><h5>USDT</h5><b class="USDTK">Brak Połączenia</b> </section>
-                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5>USDC</h5><b class="USDCK">Brak Połączenia</b>  </section> 
+                    <section class="one-column"><div> <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=018"  id="btclogo" /><h5>BTC</h5><b  id="kurs">Brak Połączenia<br>Kurs na www.flyingatom.com</b></div> </section> 
+                    <section class="two-column" > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1024px-Ethereum-icon-purple.svg.png"   id="ethlogo"/><h5>ETH</h5><b class="ETHK">Brak Połączenia<br>Kurs na www.flyingatom.com</b> </section>
+                    <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"   id="usdtlogo"/><h5>USDT</h5><b class="USDTK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b> </section>
+                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5>USDC</h5><b class="USDCK">Brak Połączenia<br>&nbsp&nbsp Kurs na www.flyingatom.com</b>  </section> 
                     </div>     
         </div>
         </body>		
         </html>
-       
