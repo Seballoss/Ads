@@ -214,8 +214,19 @@ h5{
     function odswiez(){
         setTimeout('window.location.reload()', 45000);
 }      
-    function sprawdz(){                                      
-if (navigator.onLine) {                                             
+    function sprawdz() {
+    var xhr = new XMLHttpRequest();
+    var file = "https://i.imgur.com/7ofBNix.png";
+    var randomNum = Math.round(Math.random() * 10000);
+ 
+    xhr.open('HEAD', file + "?rand=" + randomNum, true);
+    xhr.send();
+     
+    xhr.addEventListener("readystatechange", processRequest, false);
+ 
+    function processRequest(e) {
+      if (xhr.readyState == 4) {
+        if (xhr.status >= 200 && xhr.status < 304) {                                             
     $.getJSON("https://kantor.flyingatom.com/rate/merge", function (data) {
         var USDTK = parseFloat(data.USDTPLN.cashIn)
         var USDTS = parseFloat(data.USDTPLN.cashOut)
@@ -240,6 +251,8 @@ if (navigator.onLine) {
     $("#kurs").html(nowa);
     odswiez()
 }
+    }
+    }
     }
     sprawdz()
 setInterval(sprawdz, 45000);    
