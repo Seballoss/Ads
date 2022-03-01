@@ -209,10 +209,10 @@ h5{
             setInterval(change, 8000);
         }, false);
    </script>
-
+<!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
 <script>
-    function sprawdz(){
-if (navigator.onLine) {
+    function sprawdz(){                                      
+if (navigator.onLine) {                                             
     $.getJSON("https://kantor.flyingatom.com/rate/merge", function (data) {
         var USDTK = parseFloat(data.USDTPLN.cashIn)
         var USDTS = parseFloat(data.USDTPLN.cashOut)
@@ -239,8 +239,8 @@ if (navigator.onLine) {
 }
     }
     sprawdz()
-setInterval(sprawdz, 45000);
-   </script>
+setInterval(sprawdz, 45000);                            
+   </script>                                    <!-- odświeżenie strony po 45 sekundach jeśli nie ma połączenia i zmiana wyświetlanego tekstu -->
 
 
 
@@ -266,12 +266,12 @@ setInterval(sprawdz, 45000);
         <img src="bitomat-baner-grupa-mediam-1920x1080.png" />
         </div>
         
-        <div id="stopka">
+        <div id="stopka">                                                           <!-- Dodanie skrótów nazw kryptowalut -->
                 <div id="caption">   
                     <section class="one-column"><div> <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png?v=018"  id="btclogo" /><h5>BTC</h5><b  id="kurs">Brak Połączenia</b></div> </section> 
                     <section class="two-column" > <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Ethereum-icon-purple.svg/1024px-Ethereum-icon-purple.svg.png"   id="ethlogo"/><h5>ETH</h5><b class="ETHK">Brak Połączenia</b> </section>
                     <section class="three-column" ><img src="https://cryptologos.cc/logos/tether-usdt-logo.png"   id="usdtlogo"/><h5>USDT</h5><b class="USDTK">Brak Połączenia</b> </section>
-                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5>USDC</h5><b class="USDCK">Brak Połączenia</b>  </section>
+                    <section class="four-column" > <img src="https://cryptologos.cc/logos/usd-coin-usdc-logo.png"   id="usdclogo"/><h5>USDC</h5><b class="USDCK">Brak Połączenia</b>  </section> 
                     </div>     
         </div>
         </body>		
