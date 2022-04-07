@@ -231,7 +231,7 @@ h5{
     function processRequest(e) {
       if (xhr.readyState == 4) {
         if (xhr.status >= 200 && xhr.status < 304) {                                             
-    $.getJSON("https://kantor.flyingatom.com/rate/merge", function (data) {
+    $.getJSON("https://api.flyingatom.com/merge.json", function (data) {
         var USDTK = parseFloat(data.USDTPLN.cashIn)
         var USDTS = parseFloat(data.USDTPLN.cashOut)
         var USDCK = parseFloat(data.USDCPLN.cashIn)
