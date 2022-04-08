@@ -232,15 +232,15 @@ h5{
       if (xhr.readyState == 4) {
         if (xhr.status >= 200 && xhr.status < 304) {                                             
     $.getJSON("https://api.flyingatom.com/merge.json", function (data) {
-        var USDTK = parseFloat(data.USDTPLN.cashIn)
-        var USDTS = parseFloat(data.USDTPLN.cashOut)
-        var USDCK = parseFloat(data.USDCPLN.cashIn)
-        var USDCS = parseFloat(data.USDCPLN.cashOut)
+        var USDTK = parseFloat(data.USDT.cashIn)
+        var USDTS = parseFloat(data.USDT.cashOut)
+        var USDCK = parseFloat(data.USDC.cashIn)
+        var USDCS = parseFloat(data.USDC.cashOut)
        
-    var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETHPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.ETHPLN.cashOut))+ " PLN "; 
+    var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETH.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.ETH.cashOut))+ " PLN "; 
     var KUSDT = "ZAKUP: " +(USDTK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDTS).toFixed(2)+ " PLN ";           
     var KUSDC = "ZAKUP: " +(USDCK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDCS).toFixed(2)+ " PLN ";     
-    var text ="ZAKUP: " + Math.floor(parseFloat(data.BTCPLN.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.BTCPLN.cashOut))+ " PLN "; 
+    var text ="ZAKUP: " + Math.floor(parseFloat(data.BTC.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.BTC.cashOut))+ " PLN "; 
     
     $(".ETHK").html(KETH);
     $(".USDTK").html(KUSDT);
