@@ -1,195 +1,229 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script type="javascript"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style style="text/css">
-    #caption {
-position: fixed;
-font-size: 20px;
-line-height: 30px;
-height:120px;
-width: 100%;
-white-space: nowrap;
--moz-animation:  caption 50s linear 0s infinite;
--webkit-animation:  caption 50s linear 0s infinite;
-}
-@-moz-keyframes caption { 
-0% { margin-left:100%; } 100% { margin-left:-2450px; }  
-}
-@-webkit-keyframes caption { 
-0% { margin-left:100%; } 100% { margin-left:-2450px; }  
-}
-html,body {
-margin:0;
-padding:0;
-}
-body{
-height: 100%;
-overflow:hidden;
-font-size:26px ;
-font-family: Lucida Sans Unicode;
-}
-#pictures {
-min-height: 100%
-    z-index: -;
-    width: 1920px;
-    height: 960px;
-}
-#pictures img {
-display: block;
-  position:absolute;
-top: 0; left: 0; right: 0;
-        z-index: -;
-        width: 1920px;
-height: 960px;
-opacity: 0;
-transition: opacity 1s;
-}
-#pictures img.current {
-opacity: 1;
-width: 1920px;
-height: 960px;
-    z-index: -;  
-}
-#stopka{ 
-width: 1920px;
-height: 120px;
-position: absolute ;
-z-index: 2;
-background-color: #cbae52;
-color: #1B1A39;
-}
-.one-column{
-float:left;
-width:500px;
-background-color:#1B1A39;
-text-align: center;
-border-style:solid;
-border-radius: 25px;
-color:whitesmoke;
-line-height: 40px;
-margin-top: 10px;
-height: 80px;
-font-size: 24px;
-}
-.two-column{
-float:left;
-width:500px;
-background-color:#1B1A39;
-text-align: center;
-border-style:solid;
-border-radius: 25px;
-color:whitesmoke;
-position:absolute;
-margin-left: 550px;
-margin-top: 10px;
-height: 80px;
-font-size: 24px;
-line-height: 40px;
-}
-.three-column{
-float:left;
-width:500px;
-background-color:#1B1A39;
-text-align: center;
-border-style:solid;
-border-radius: 25px;
-color:whitesmoke;
-position:absolute;
-margin-left: 1100px;
-margin-top: 10px;
-height: 80px;
-font-size: 24px;
-line-height: 40px;
-}
-.four-column{
-float:left;
-width:500px;
-background-color:#1B1A39;
-text-align: center;
-border-style:solid;
-border-radius: 25px;
-color:whitesmoke;
-position:absolute;
-margin-left: 1650px;
-margin-top: 10px;
-height: 80px;
-font-size: 24px;
-line-height: 40px;
-}
-.five-column{
-float:left;
-width:250px;
-background-color:#1B1A39;
-text-align: center;
-border-style:solid;
-border-radius: 25px;
-color:whitesmoke;
-position:absolute;
-margin-left: 2200px;
-margin-top: 10px;
-height: 80px;
-font-size: 24px;
-line-height: 40px;
-}
-#caption {
-margin-top: 5px;
-margin-bottom: 8px;
-height: 100px;
-width: 100%;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        #caption {
+            position: fixed;
+            font-size: 20px;
+            line-height: 30px;
+            height: 120px;
+            width: 100%;
+            white-space: nowrap;
+            -moz-animation: caption 50s linear 0s infinite;
+            -webkit-animation: caption 50s linear 0s infinite;
+        }
 
-#btclogo{
-    float: left;
-width: 50px;   
-height: 45px;
-margin-bottom: -50px;
-margin-left: 12px;
-margin-top:2px;
-}
+        @-moz-keyframes caption {
+            0% {
+                margin-left: 100%;
+            }
 
-#ethlogo{
-    float: left;
-width: 50px;   
-height: 50px;
-margin-bottom: -50px;
-margin-left: 12px;
-}
-#usdtlogo{
-    float: left;
-width: 50px;   
-height: 45px;
-margin-bottom: -50px;
-margin-left: 16px;
-margin-top:2px;
-}
-#usdclogo{
-    float: left;
-width: 50px;   
-height: 46px;
-margin-bottom: -50px;
-margin-left: 16px;
-margin-top:2px;
-}
-#kurs{
-z-index:1;
-}
-h5{
-    float:left;
-    width: 30px;
-    height: 30px;
-    margin-left: 17px;
-    margin-top:45px;
-}
-#USD{
-    margin-left: 15px; 
-}
+            100% {
+                margin-left: -2450px;
+            }
+        }
 
-</style>
+        @-webkit-keyframes caption {
+            0% {
+                margin-left: 100%;
+            }
+
+            100% {
+                margin-left: -2450px;
+            }
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            height: 100%;
+            overflow: hidden;
+            font-size: 26px;
+            font-family: Lucida Sans Unicode;
+        }
+
+        #pictures {
+            min-height: 100%;
+            width: 1920px;
+            height: 960px;
+        }
+
+        #pictures img {
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+
+            width: 1920px;
+            height: 960px;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        #pictures img.current {
+            opacity: 1;
+            width: 1920px;
+            height: 960px;
+
+        }
+
+        #stopka {
+            width: 1920px;
+            height: 120px;
+            position: absolute;
+            z-index: 2;
+            background-color: #cbae52;
+            color: #1B1A39;
+        }
+
+        .one-column {
+            float: left;
+            width: 500px;
+            background-color: #1B1A39;
+            text-align: center;
+            border-style: solid;
+            border-radius: 25px;
+            color: whitesmoke;
+            line-height: 40px;
+            margin-top: 10px;
+            height: 80px;
+            font-size: 24px;
+        }
+
+        .two-column {
+            float: left;
+            width: 500px;
+            background-color: #1B1A39;
+            text-align: center;
+            border-style: solid;
+            border-radius: 25px;
+            color: whitesmoke;
+            position: absolute;
+            margin-left: 550px;
+            margin-top: 10px;
+            height: 80px;
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        .three-column {
+            float: left;
+            width: 500px;
+            background-color: #1B1A39;
+            text-align: center;
+            border-style: solid;
+            border-radius: 25px;
+            color: whitesmoke;
+            position: absolute;
+            margin-left: 1100px;
+            margin-top: 10px;
+            height: 80px;
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        .four-column {
+            float: left;
+            width: 500px;
+            background-color: #1B1A39;
+            text-align: center;
+            border-style: solid;
+            border-radius: 25px;
+            color: whitesmoke;
+            position: absolute;
+            margin-left: 1650px;
+            margin-top: 10px;
+            height: 80px;
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        .five-column {
+            float: left;
+            width: 250px;
+            background-color: #1B1A39;
+            text-align: center;
+            border-style: solid;
+            border-radius: 25px;
+            color: whitesmoke;
+            position: absolute;
+            margin-left: 2200px;
+            margin-top: 10px;
+            height: 80px;
+            font-size: 24px;
+            line-height: 40px;
+        }
+
+        #caption {
+            margin-top: 5px;
+            margin-bottom: 8px;
+            height: 100px;
+            width: 100%;
+        }
+
+        #btclogo {
+            float: left;
+            width: 50px;
+            height: 45px;
+            margin-bottom: -50px;
+            margin-left: 12px;
+            margin-top: 2px;
+        }
+
+        #ethlogo {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-bottom: -50px;
+            margin-left: 12px;
+        }
+
+        #usdtlogo {
+            float: left;
+            width: 50px;
+            height: 45px;
+            margin-bottom: -50px;
+            margin-left: 16px;
+            margin-top: 2px;
+        }
+
+        #usdclogo {
+            float: left;
+            width: 50px;
+            height: 46px;
+            margin-bottom: -50px;
+            margin-left: 16px;
+            margin-top: 2px;
+        }
+
+        #kurs {
+            z-index: 1;
+        }
+
+        h5 {
+            float: left;
+            width: 30px;
+            height: 30px;
+            margin-left: 17px;
+            margin-top: 45px;
+        }
+
+        #USD {
+            margin-left: 15px;
+        }
+    </style>
 </head>
+
 <body>
     <script>
 
@@ -213,64 +247,61 @@ h5{
             change();
             setInterval(change, 8000);
         }, false);
-   </script>
-<!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
-<script>    
-    function odswiez(){
-        setTimeout('window.location.reload()', 50000);
-}      
-    function sprawdz() {
-    var xhr = new XMLHttpRequest();
-    var file = "https://i.imgur.com/7ofBNix.png";
-    var randomNum = Math.round(Math.random() * 10000);
- 
-    xhr.open('HEAD', file + "?rand=" + randomNum, true);
-    xhr.send();
-    xhr.addEventListener("readystatechange", processRequest, false);
-    function processRequest(e) {
-      if (xhr.readyState == 4) {
-        if (xhr.status >= 200 && xhr.status < 304) {                                             
-    $.getJSON("https://api.flyingatom.com/merge.json", function (data) {
-        var USDTK = parseFloat(data.USDT.cashIn)
-        var USDTS = parseFloat(data.USDT.cashOut)
-        var USDCK = parseFloat(data.USDC.cashIn)
-        var USDCS = parseFloat(data.USDC.cashOut)
-       
-    var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETH.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.ETH.cashOut))+ " PLN "; 
-    var KUSDT = "ZAKUP: " +(USDTK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDTS).toFixed(2)+ " PLN ";           
-    var KUSDC = "ZAKUP: " +(USDCK).toFixed(2) +" PLN <br>SPRZEDAŻ: " +(USDCS).toFixed(2)+ " PLN ";     
-    var text ="ZAKUP: " + Math.floor(parseFloat(data.BTC.cashIn)) +" PLN <br>SPRZEDAŻ: " +Math.floor(parseFloat(data.BTC.cashOut))+ " PLN "; 
-    
-    $(".ETHK").html(KETH);
-    $(".USDTK").html(KUSDT);
-    $(".USDCK").html(KUSDC);
-    $("#kurs").html(text);
-})
-} else {
-    var nowa = "Brak Połączenia<br>&nbsp&nbspKurs na www.flyingatom.com"; 
-    $(".ETHK").html(nowa);
-    $(".USDTK").html(nowa);
-    $(".USDCK").html(nowa);
-    $("#kurs").html(nowa);
-    odswiez()
-}
-    }
-    }
-    }
-    
-setInterval(sprawdz, 50000);    
-                  
-   </script>                                    <!-- odświeżenie strony po 45 sekundach jeśli nie ma połączenia i zmiana wyświetlanego tekstu -->
+    </script>
+    <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
+    <script>
+
+        function sprawdz() {
+            $.getJSON("https://api.flyingatom.com/merge.json")
+                .done(function (data) {
+                    var USDTK = parseFloat(data.USDT.cashIn);
+                    var USDTS = parseFloat(data.USDT.cashOut);
+                    var USDCK = parseFloat(data.USDC.cashIn);
+                    var USDCS = parseFloat(data.USDC.cashOut);
+
+                    var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETH.cashIn)) + " PLN <br>SPRZEDAŻ: " + Math.floor(parseFloat(data.ETH.cashOut)) + " PLN ";
+                    var KUSDT = "ZAKUP: " + (USDTK).toFixed(2) + " PLN <br>SPRZEDAŻ: " + (USDTS).toFixed(2) + " PLN ";
+                    var KUSDC = "ZAKUP: " + (USDCK).toFixed(2) + " PLN <br>SPRZEDAŻ: " + (USDCS).toFixed(2) + " PLN ";
+                    var text = "ZAKUP: " + Math.floor(parseFloat(data.BTC.cashIn)) + " PLN <br>SPRZEDAŻ: " + Math.floor(parseFloat(data.BTC.cashOut)) + " PLN ";
+
+                    $(".ETHK").html(KETH);
+                    $(".USDTK").html(KUSDT);
+                    $(".USDCK").html(KUSDC);
+                    $("#kurs").html(text);
+                })
+                .fail(function () {
+                    var nowa = "Brak Połączenia<br>&nbsp&nbspKurs na www.flyingatom.com";
+                    $(".ETHK").html(nowa);
+                    $(".USDTK").html(nowa);
+                    $(".USDCK").html(nowa);
+                    $("#kurs").html(nowa);
+                });
+        }
+        setInterval(sprawdz, 50000);
+
+
+    </script> <!-- odświeżenie strony po 45 sekundach jeśli nie ma połączenia i zmiana wyświetlanego tekstu -->
 
     <div id="pictures"></div>
-        
-        <div id="stopka">                                                           <!-- Dodanie skrótów nazw kryptowalut -->
-                <div id="caption">   
-                    <section class="one-column"><div> <img src="lbtc.png"  id="btclogo" /><h5>BTC</h5><b  id="kurs">Brak Połączenia<br>Kurs na www.flyingatom.com</b></div> </section> 
-                    <section class="two-column" > <img src="leth.png"   id="ethlogo"/><h5>ETH*</h5><b class="ETHK">Brak Połączenia<br>Kurs na www.flyingatom.com</b> </section>
-                    <section class="three-column" ><img src="lusdt.png"   id="usdtlogo"/><h5 id="USD">USDT*</h5><b class="USDTK">Brak Połączenia<br>Kurs na www.flyingatom.com</b> </section>
-                    <section class="four-column" > <img src="lusdc.png"   id="usdclogo"/><h5 id="USD">USDC*</h5><b class="USDCK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>  </section> 
-                    <section class="five-column"><b>* - Tylko sieć<br>ERC20!</b></section>
+
+    <div id="stopka"> <!-- Dodanie skrótów nazw kryptowalut -->
+        <div id="caption">
+            <section class="one-column">
+                <div> <img src="lbtc.png" id="btclogo" />
+                    <h5>BTC</h5><b id="kurs">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
+                </div>
+            </section>
+            <section class="two-column"> <img src="leth.png" id="ethlogo" />
+                <h5>ETH*</h5><b class="ETHK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
+            </section>
+            <section class="three-column"><img src="lusdt.png" id="usdtlogo" />
+                <h5 id="USD">USDT*</h5><b class="USDTK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
+            </section>
+            <section class="four-column"> <img src="lusdc.png" id="usdclogo" />
+                <h5 id="USD">USDC*</h5><b class="USDCK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
+            </section>
+            <section class="five-column"><b>* - Tylko sieć<br>ERC20!</b></section>
         </div>
-        </body>		
-        </html>
+</body>
+
+</html>
