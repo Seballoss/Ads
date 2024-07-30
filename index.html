@@ -252,7 +252,7 @@
     <script>
 
         function sprawdz() {
-            $.getJSON("https://kantor.flyingatom.com/api/rates/all")
+            $.getJSON("https://api.flyingatom.com/merge.json")
                 .done(function (data) {
                     var USDTK = parseFloat(data.USDT.cashIn);
                     var USDTS = parseFloat(data.USDT.cashOut);
