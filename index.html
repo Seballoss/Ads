@@ -252,6 +252,7 @@
     <script>
 
         function sprawdz() {
+            $.ajaxSetup({ cache: false });
             $.getJSON("https://api.flyingatom.com/merge.json")
                 .done(function (data) {
                     var USDTK = parseFloat(data.USDT.cashIn);
