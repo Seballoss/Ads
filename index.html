@@ -225,15 +225,18 @@
 </head>
 
 <body>
-    <script>
-
+   <script>
         document.addEventListener("DOMContentLoaded", function () {
             var container = document.querySelector("#pictures");
-            var pictures = container.querySelectorAll("img");
+            var pictures = Array.from(container.querySelectorAll("img"));
+
+            var interval = 8000; // Domyślny czas 8 sekund
+            var timer; // Zmienna przechowująca ID interwału
 
             function change() {
                 var current = container.querySelector("img.current");
-                var next = container.querySelector("img.current + img") || pictures[0];
+                var nextIndex = (pictures.indexOf(current) + 1) % pictures.length;
+                var next = pictures[nextIndex];
 
                 if (current) {
                     current.classList.remove("current");
@@ -242,10 +245,18 @@
                 if (next) {
                     next.classList.add("current");
                 }
+
+                // Ustaw czas wyświetlania na 60 sekund dla "informacja.jpg"
+                interval = next.getAttribute("src") === "informacja.jpg" ? 60000 : 8000;
+
+                // Resetuj interwał
+                clearInterval(timer);
+                timer = setInterval(change, interval);
             }
 
+            // Uruchom początkową zmianę i interwał
             change();
-            setInterval(change, 8000);
+            timer = setInterval(change, interval);
         }, false);
     </script>
     <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
