@@ -226,39 +226,29 @@
 
 <body>
    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var container = document.querySelector("#pictures");
-            var pictures = Array.from(container.querySelectorAll("img"));
+    document.addEventListener("DOMContentLoaded", function () {
+        var container = document.querySelector("#pictures");
+        var pictures = [].slice.call(container.querySelectorAll("img"));
+        var currentIndex = 0; 
 
-            var interval = 8000; // Domyślny czas 8 sekund
-            var timer; // Zmienna przechowująca ID interwału
-
-            function change() {
-                var current = container.querySelector("img.current");
-                var nextIndex = (pictures.indexOf(current) + 1) % pictures.length;
-                var next = pictures[nextIndex];
-
-                if (current) {
-                    current.classList.remove("current");
-                }
-
-                if (next) {
-                    next.classList.add("current");
-                }
-
-                // Ustaw czas wyświetlania na 60 sekund dla "informacja.jpg"
-                interval = next.getAttribute("src") === "informacja.jpg" ? 60000 : 8000;
-
-                // Resetuj interwał
-                clearInterval(timer);
-                timer = setInterval(change, interval);
+        function change() {
+            var current = container.querySelector("img.current");
+            if (current) {
+                current.classList.remove("current");
             }
 
-            // Uruchom początkową zmianę i interwał
-            change();
-            timer = setInterval(change, interval);
-        }, false);
-    </script>
+            var next = pictures[currentIndex];
+            if (next) {
+                next.classList.add("current");
+            }
+
+            var nextInterval = next.getAttribute("src") === "informacja.jpg" ? 60000 : 8000;
+            currentIndex = (currentIndex + 1) % pictures.length;
+            setTimeout(change, nextInterval);
+        }
+        change();
+    }, false);
+</script>
     <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
     <script>
 
