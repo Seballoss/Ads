@@ -249,61 +249,8 @@
         change();
     }, false);
 </script>
-    <!-- Dodanie funkcji która sprawdza czy jest połączenie z internetem -->
-    <script>
-
-        function sprawdz() {
-            $.ajaxSetup({ cache: false });
-            $.getJSON("https://api.flyingatom.com/merge.json")
-                .done(function (data) {
-                    var USDTK = parseFloat(data.USDT.cashIn);
-                    var USDTS = parseFloat(data.USDT.cashOut);
-                    var USDCK = parseFloat(data.USDC.cashIn);
-                    var USDCS = parseFloat(data.USDC.cashOut);
-
-                    var KETH = "ZAKUP: " + Math.floor(parseFloat(data.ETH.cashIn)) + " PLN <br>SPRZEDAŻ: " + Math.floor(parseFloat(data.ETH.cashOut)) + " PLN ";
-                    var KUSDT = "ZAKUP: " + (USDTK).toFixed(2) + " PLN <br>SPRZEDAŻ: " + (USDTS).toFixed(2) + " PLN ";
-                    var KUSDC = "ZAKUP: " + (USDCK).toFixed(2) + " PLN <br>SPRZEDAŻ: " + (USDCS).toFixed(2) + " PLN ";
-                    var text = "ZAKUP: " + Math.floor(parseFloat(data.BTC.cashIn)) + " PLN <br>SPRZEDAŻ: " + Math.floor(parseFloat(data.BTC.cashOut)) + " PLN ";
-
-                    $(".ETHK").html(KETH);
-                    $(".USDTK").html(KUSDT);
-                    $(".USDCK").html(KUSDC);
-                    $("#kurs").html(text);
-                })
-                .fail(function () {
-                    var nowa = "Brak Połączenia<br>&nbsp&nbspKurs na www.flyingatom.com";
-                    $(".ETHK").html(nowa);
-                    $(".USDTK").html(nowa);
-                    $(".USDCK").html(nowa);
-                    $("#kurs").html(nowa);
-                });
-        }
-        setInterval(sprawdz, 50000);
-
-
-    </script> <!-- odświeżenie strony po 45 sekundach jeśli nie ma połączenia i zmiana wyświetlanego tekstu -->
 
     <div id="pictures"></div>
-
-    <div id="stopka"> <!-- Dodanie skrótów nazw kryptowalut -->
-        <div id="caption">
-            <section class="one-column">
-                <div> <img src="lbtc.png" id="btclogo" />
-                    <h5>BTC</h5><b id="kurs">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
-                </div>
-            </section>
-            <section class="two-column"> <img src="leth.png" id="ethlogo" />
-                <h5>ETH*</h5><b class="ETHK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
-            </section>
-            <section class="three-column"><img src="lusdt.png" id="usdtlogo" />
-                <h5 id="USD">USDT*</h5><b class="USDTK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
-            </section>
-            <section class="four-column"> <img src="lusdc.png" id="usdclogo" />
-                <h5 id="USD">USDC*</h5><b class="USDCK">Brak Połączenia<br>Kurs na www.flyingatom.com</b>
-            </section>
-            <section class="five-column"><b>* - Tylko sieć<br>ERC20!</b></section>
-        </div>
 </body>
 
 </html>
